@@ -1,4 +1,4 @@
-import { useContext, useEffect, useReducer } from 'react'
+import { memo, useContext, useEffect, useReducer } from 'react'
 import { ctx, defaultState, reducer } from './context'
 
 export function Shared() {
@@ -11,7 +11,7 @@ export function Shared() {
   )
 }
 
-function SharedWrapper() {
+const SharedWrapper = memo(() => {
   return (
     <>
       <h1>shared</h1>
@@ -19,7 +19,7 @@ function SharedWrapper() {
       <SharedDispatch />
     </>
   )
-}
+})
 
 function SharedState() {
   const { state } = useContext(ctx.shared)

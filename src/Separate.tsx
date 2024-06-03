@@ -1,4 +1,4 @@
-import { useContext, useEffect, useReducer } from 'react'
+import { memo, useContext, useEffect, useReducer } from 'react'
 import { ctx, defaultState, reducer } from './context'
 
 function SeparateState() {
@@ -15,7 +15,7 @@ function SeparateDispatch() {
   return <button onClick={dispatch}>Increment</button>
 }
 
-function SeparateWrapper() {
+const SeparateWrapper = memo(() => {
   return (
     <>
       <h1>separate</h1>
@@ -23,7 +23,7 @@ function SeparateWrapper() {
       <SeparateDispatch />
     </>
   )
-}
+})
 
 export function Separate() {
   const [state, dispatch] = useReducer(reducer, defaultState)
